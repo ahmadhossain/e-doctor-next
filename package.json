@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
+    "antd": "^5.12.5",
     "next": "14.0.3",
     "next-auth": "^4.24.5",
     "react": "^18",

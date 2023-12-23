@@ -71,13 +71,13 @@ const RegisterPage = () => {
       <div className={`flex justify-center items-center flex-col`}>
         <div className="w-full md:w-1/2 ">
           <form
-            className="px-10 md:px-14 py-5  rounded-lg border border-blue-500"
+            className="px-10 md:px-14 py-5  rounded-lg border border-blue-300"
             onSubmit={handleSubmit(onSubmit)}
           >
             <div className="my-2 rounded-full mx-auto">
-              <h1 className="py-1.5 text-white text-2xl font-bold text-center">
+              <h3 className="py-1.5 font-bold text-center">
                 Doctor Registration
-              </h1>
+              </h3>
             </div>
             {renderedInput}
             <div className="flex justify-end">

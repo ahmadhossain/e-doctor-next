@@ -1,6 +1,6 @@
 const Label = ({ label, required }) => {
   return (
-    <label className="text-sm pr-5 text-white">
+    <label className="pr-5">
       {label}
       {required && (
         <span className="text-xl px-1 font-semibold text-red-500">{"*"}</span>

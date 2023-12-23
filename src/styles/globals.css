@@ -2,7 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  h1,
+  h3 {
+    @apply text-zinc-700 py-3;
+  }
+  h1 {
+    @apply font-bold text-5xl;
+  }
+  h3 {
+    @apply font-semibold text-2xl;
+  }
+}
+a:hover {
+  color: #111827;
+}
+
 body {
-  background-color: #111827;
-  color: rgb(255 255 255);
+  color: black;
 }
