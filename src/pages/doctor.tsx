@@ -10,7 +10,7 @@ const doctor = () => {
       </h1>
       <h3>Join the digital healthcare.</h3>
       <Link href={"/register"}>
-        <Button className="bg-emerald-500 rounded-full text-white font-bold">
+        <Button size="large" className="bg-emerald-500 text-white font-bold">
           Sign up now
         </Button>
       </Link>
