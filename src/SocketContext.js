@@ -24,7 +24,6 @@ const ContextProvider = ({ children }) => {
       .getUserMedia({ video: true, audio: true })
       .then((currentStream) => {
         setStream(currentStream);
-
         myVideo.current.srcObject = currentStream;
       });
 
@@ -34,6 +33,8 @@ const ContextProvider = ({ children }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
   }, []);
+
+  console.log(me, "me");
 
   const answerCall = () => {
     setCallAccepted(true);

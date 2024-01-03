@@ -7,7 +7,7 @@ const SpecialityPage = () => {
       <h2>Please select a speciality</h2>
       <div className="grid grid-cols-3 gap-4 justify-center">
         {specialityFields.map((el) => (
-          <Link href={`/specialities/${el.slug}`}>
+          <Link href={`/lobby`}>
             <div className="min-h-[150px] shadow-md border rounded-lg p-6">
               <div className="font-semibold text-2xl pb-3">{el.name}</div>
               <div className="text-slate-500">{el.details}</div>
