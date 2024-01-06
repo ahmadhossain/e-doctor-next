@@ -1,8 +1,15 @@
 import { useRouter } from "next/router";
 import { AiOutlineUser } from "react-icons/ai";
-import { Button } from "antd";
+import { Button, Rate } from "antd";
 
-const DoctorCard = ({ name, specialities, degree }) => {
+const DoctorCard = ({
+  name,
+  specialities,
+  degree,
+  working,
+  rating,
+  experience,
+}) => {
   const router = useRouter();
   return (
     <div className="flex rounded-md cursor-pointer shadow hover:shadow-md my-3 p-4 gap-10 border h-32">
@@ -14,6 +21,22 @@ const DoctorCard = ({ name, specialities, degree }) => {
         <div className="text-base font-light">{degree}</div>
         <div className="text-gray-400 text-sm">Specialities</div>
         <div className="text-sm">{specialities}</div>
+      </div>
+      <div>
+        <div className="text-gray-400 text-sm">Working in</div>
+        <div className="text-md font-medium text-slate-800">{working}</div>
+        <div className="flex gap-4">
+          <div>
+            <div className="text-gray-400 text-sm">Total Experience</div>
+            <div className="text-md font-medium text-slate-800">
+              {experience}
+            </div>
+          </div>
+          <div>
+            <div className="text-gray-400 text-sm">Rating</div>
+            <Rate disabled defaultValue={rating} />
+          </div>
+        </div>
       </div>
       <div className="flex gap-3 items-center">
         <Button
