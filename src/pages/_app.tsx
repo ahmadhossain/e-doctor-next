@@ -18,7 +18,7 @@ export default function App({
     <ConfigProvider theme={theme}>
       <SessionProvider session={session}>
         <ContextProvider>
-          <Nav />
+          {show && <Nav />}
           <div className="min-h-[calc(100vh-67px)]">
             <Component {...pageProps} />
           </div>

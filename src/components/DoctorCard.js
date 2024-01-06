@@ -2,6 +2,10 @@ import { useRouter } from "next/router";
 import { AiOutlineUser } from "react-icons/ai";
 import { Button, Rate } from "antd";
 
+import { SocketContext } from "@/SocketContext";
+import { useContext } from "react";
+import Link from "next/link";
+
 const DoctorCard = ({
   name,
   specialities,
@@ -11,8 +15,15 @@ const DoctorCard = ({
   experience,
 }) => {
   const router = useRouter();
+  const { me, callAccepted, setName, callEnded, leaveCall, callUser } =
+    useContext(SocketContext);
+
+  const handleCall = () => {
+    callUser();
+    router.push("/live");
+  };
   return (
-    <div className="flex rounded-md cursor-pointer shadow hover:shadow-md my-3 p-4 gap-10 border h-32">
+    <div className="flex rounded-md cursor-pointer shadow hover:shadow-md my-3 p-4 gap-10 border ">
       <div className="w-24 flex  justify-center items-center rounded-md bg-gray-200">
         <AiOutlineUser size="3.5rem" color="white" />
       </div>
@@ -39,18 +50,10 @@ const DoctorCard = ({
         </div>
       </div>
       <div className="flex gap-3 items-center">
-        <Button
-          shape="round"
-          type="primary"
-          onClick={() => router.push("/live")}
-        >
+        <Button onClick={handleCall} shape="round" type="primary">
           See Doctor
         </Button>
-        <Button
-          shape="round"
-          type="primary"
-          onClick={() => router.push("/live")}
-        >
+        <Button shape="round" type="primary">
           Chat with Doctor
         </Button>
       </div>

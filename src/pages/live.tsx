@@ -4,11 +4,11 @@ import VideoPlayer from "@/components/VideoPlayer";
 
 const live = () => {
   return (
-    <div>
+    <div className="bg-black min-h-screen">
       <VideoPlayer />
-      <Sidebar>
-        <Notifications />
-      </Sidebar>
+      {/* <Sidebar> */}
+      <Notifications />
+      {/* </Sidebar> */}
     </div>
   );
 };

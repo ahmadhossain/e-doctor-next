@@ -1,6 +1,7 @@
 import React, { createContext, useState, useRef, useEffect } from "react";
 import { io } from "socket.io-client";
 import Peer from "simple-peer";
+import { useRouter } from "next/router";
 
 const SocketContext = createContext();
 
@@ -18,6 +19,7 @@ const ContextProvider = ({ children }) => {
   const myVideo = useRef();
   const userVideo = useRef();
   const connectionRef = useRef();
+  const router = useRouter();
 
   useEffect(() => {
     navigator.mediaDevices
@@ -32,7 +34,7 @@ const ContextProvider = ({ children }) => {
     socket.on("callUser", ({ from, name: callerName, signal }) => {
       setCall({ isReceivingCall: true, from, name: callerName, signal });
     });
-  }, []);
+  }, [router.asPath]);
 
   console.log(me, "me");
 
@@ -46,7 +48,7 @@ const ContextProvider = ({ children }) => {
     });
 
     peer.on("stream", (currentStream) => {
-      userVideo.current.srcObject = currentStream;
+      if (userVideo.current) userVideo.current.srcObject = currentStream;
     });
 
     peer.signal(call.signal);
@@ -67,7 +69,7 @@ const ContextProvider = ({ children }) => {
     });
 
     peer.on("stream", (currentStream) => {
-      userVideo.current.srcObject = currentStream;
+      if (userVideo.current) userVideo.current.srcObject = currentStream;
     });
 
     socket.on("callAccepted", (signal) => {

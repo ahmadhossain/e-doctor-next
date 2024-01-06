@@ -12,19 +12,25 @@ const Sidebar = ({ children }) => {
   return (
     <>
       <form className="w-40" noValidate autoComplete="off">
-        <CopyToClipboard text={me}>
+        {/* <CopyToClipboard text={me}>
           <Button>Copy Your ID</Button>
         </CopyToClipboard>
         <Input
           label="ID to call"
           value={idToCall}
           onChange={(e) => setIdToCall(e.target.value)}
-        />
-        {callAccepted && !callEnded ? (
+        /> */}
+        {!callAccepted && !callEnded ? (
+          <Button onClick={() => callUser(idToCall)}>Call</Button>
+        ) : (
+          ""
+        )}
+
+        {/* {callAccepted && !callEnded ? (
           <Button onClick={leaveCall}>Hang Up</Button>
         ) : (
           <Button onClick={() => callUser(idToCall)}>Call</Button>
-        )}
+        )} */}
       </form>
       {children}
     </>
