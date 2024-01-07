@@ -1,56 +1,37 @@
-import io from "socket.io-client";
-import { useEffect, useState } from "react";
+import Messege from "@/components/Messege";
 import { Button, Input } from "antd";
 
-const socket = io("http://localhost:3001");
-
-function ChatPage() {
-  const [room, setRoom] = useState("");
-  const [message, setMessage] = useState("");
-  const [allMsg, setAllMsg] = useState<any>([]);
-
-  //   const joinRoom = () => {
-  //     if (room !== "") {
-  //       socket.emit("join_room", room);
-  //     }
-  //   };
-
-  const sendMessage = () => {
-    socket.emit("message", { message });
-  };
-
-  useEffect(() => {
-    socket.on("message", (data) => {
-      setAllMsg((prevMsg: any) => [...prevMsg, data.message]);
-    });
-    console.log("hello");
-  }, [socket]);
-
+const ChatPage = () => {
   return (
-    <div className="min-h-screen">
-      {/* <input
-        placeholder="Room Number..."
-        onChange={(event) => {
-          setRoom(event.target.value);
-        }}
-      /> */}
-      {/* <button onClick={joinRoom}> Join Room</button> */}
-      <h3> Message:</h3>
-      {allMsg.map((msg: string, index: number) => (
-        <p key={index + msg}>{msg}</p>
-      ))}
-      <div className="min-h-screen flex justify-center items-end gap-5 p-5">
-        <Input
-          className="w-60"
-          placeholder="Message..."
-          onChange={(event) => {
-            setMessage(event.target.value);
-          }}
-        />
-        <Button onClick={sendMessage}>Send</Button>
+    <div className="w-full flex flex-col justify-center items-center">
+      <div className="w-[45%]">
+        <div className="border-x overflow-y-scroll h-[calc(100vh-140px)] ">
+          <Messege own />
+          <Messege own={false} />
+          <Messege own />
+          <Messege own />
+          <Messege own />
+          <Messege own />
+          <Messege own />
+          <Messege own />
+          <Messege own />
+          <Messege own />
+          <Messege own />
+          <Messege own />
+        </div>
+        <div className="flex items-center py-2 px-8 gap-3">
+          <Input
+            size="large"
+            className="bg-slate-200 rounded-full"
+            placeholder="write messege..."
+          />
+          <Button shape="round" type="primary">
+            Send
+          </Button>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default ChatPage;

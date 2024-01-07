@@ -4,42 +4,45 @@ import { CheckboxChangeEvent } from "antd/es/checkbox/Checkbox";
 
 import DoctorCard from "@/components/DoctorCard";
 
+const doclist = [
+  {
+    name: "Dr. Shafwanur Rahman",
+    specialities: "General Physician",
+    degree: "MBBs",
+    working: "Dhaka Shishu Hospital",
+    rating: 5,
+    experience: 5,
+  },
+  {
+    name: "Dr. Shafwanur Rahman",
+    specialities: "General Physician",
+    degree: "MBBs",
+    working: "Dhaka Shishu Hospital",
+    rating: 5,
+    experience: 5,
+  },
+  {
+    name: "Dr. Shafwanur Rahman",
+    specialities: "General Physician",
+    degree: "MBBs",
+    working: "Dhaka Shishu Hospital",
+    rating: 5,
+    experience: 5,
+  },
+];
+
 const DoctorListPage = () => {
-  const doclist = [
-    {
-      name: "Dr. Shafwanur Rahman",
-      specialities: "General Physician",
-      degree: "MBBs",
-      working: "Dhaka Shishu Hospital",
-      rating: 5,
-      experience: 5,
-    },
-    {
-      name: "Dr. Shafwanur Rahman",
-      specialities: "General Physician",
-      degree: "MBBs",
-      working: "Dhaka Shishu Hospital",
-      rating: 5,
-      experience: 5,
-    },
-    {
-      name: "Dr. Shafwanur Rahman",
-      specialities: "General Physician",
-      degree: "MBBs",
-      working: "Dhaka Shishu Hospital",
-      rating: 5,
-      experience: 5,
-    },
-  ];
   const [value, setValue] = useState(1);
 
   const onChange = (e: any) => {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
+
   const onCheckboxChange = (e: CheckboxChangeEvent) => {
     console.log(`checked = ${e.target.checked}`);
   };
+
   return (
     <div className="min-h-screen flex px-8 py-5">
       <div className="min-h-screen w-80 p-10">

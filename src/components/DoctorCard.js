@@ -22,6 +22,7 @@ const DoctorCard = ({
     callUser();
     router.push("/live");
   };
+
   return (
     <div className="flex rounded-md cursor-pointer shadow hover:shadow-md my-3 p-4 gap-10 border ">
       <div className="w-24 flex  justify-center items-center rounded-md bg-gray-200">
@@ -53,7 +54,11 @@ const DoctorCard = ({
         <Button onClick={handleCall} shape="round" type="primary">
           See Doctor
         </Button>
-        <Button shape="round" type="primary">
+        <Button
+          onClick={() => router.push("/chat")}
+          shape="round"
+          type="primary"
+        >
           Chat with Doctor
         </Button>
       </div>
