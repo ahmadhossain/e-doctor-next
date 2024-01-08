@@ -6,7 +6,7 @@ const Messege = ({ own }: { own: boolean }) => {
   return (
     <div className={`flex ${own && "items-end"} flex-col gap-3 p-5 `}>
       <div className="flex gap-3">
-        <div className="">
+        <div className="rounded-full">
           <Image width={45} src={docAvatar} alt="doctor image" />
         </div>
         <p
