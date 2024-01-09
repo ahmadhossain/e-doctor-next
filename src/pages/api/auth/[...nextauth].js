@@ -1,8 +1,30 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
 
 export const authOptions = {
   providers: [
+    CredentialsProvider({
+      name: "credentials",
+      id: "credentials",
+      credentials: {
+        email: { label: "Email", type: "text" },
+        password: { label: "Password", type: "password" },
+      },
+      async authorize(credentials) {
+        if (
+          credentials?.email !== "admin@example.com" ||
+          credentials.password !== "@Password123"
+        ) {
+          throw new Error("Invalid email or password");
+        }
+        return {
+          email: "admin@example.com",
+          name: "Admin",
+          id: "test-id",
+        };
+      },
+    }),
     GoogleProvider({
       profile(profile) {
         console.log("Profile Google: ", profile);

@@ -95,10 +95,10 @@ const data: DataType[] = [
   },
 ];
 
-const dashboard: React.FC = () => (
+const AdminPage: React.FC = () => (
   <div className="p-10">
     <Table columns={columns} dataSource={data} />
   </div>
 );
 
-export default dashboard;
+export default AdminPage;
