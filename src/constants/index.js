@@ -86,6 +86,16 @@ export const registerFieldData = [
     label: "National ID",
   },
   {
+    name: "RegNumBMDC",
+    label: "Registration Number (BMDC)",
+  },
+  {
+    name: "DoctorType",
+    label: "Doctor Type",
+    type: "select",
+    options: ["Medical", "Dental", "Veterinary"],
+  },
+  {
     name: "Mobile",
     label: "Mobile number",
     pattern: /^(\+?880|0)[1-9][0-9]{9}$/,

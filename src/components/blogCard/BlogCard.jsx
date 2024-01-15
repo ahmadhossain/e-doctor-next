@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./blogCard.module.css";
 import Link from "next/link";
 
-const Card = ({ img, title, desc }) => {
+const BlogCard = ({ img, title, desc }) => {
   return (
     <div className={styles.container}>
       {
@@ -27,7 +27,7 @@ const Card = ({ img, title, desc }) => {
         >
           {desc}
         </div>
-        <Link href={`/posts/`} className={styles.link}>
+        <Link href={`blog/123`} className={styles.link}>
           Read More
         </Link>
       </div>
@@ -35,4 +35,4 @@ const Card = ({ img, title, desc }) => {
   );
 };
 
-export default Card;
+export default BlogCard;

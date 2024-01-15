@@ -1,6 +1,6 @@
 import styles from "./blogCardList.module.css";
 // import Pagination from "../pagination/Pagination";
-import Card from "../blogCard/BlogCard";
+import BlogCard from "../blogCard/BlogCard";
 
 // const getData = async (page, cat) => {
 //   const res = await fetch(
@@ -47,7 +47,7 @@ const BlogCardList = () => {
       <h2 className={styles.title}>Recent Posts</h2>
       <div className={styles.posts}>
         {posts?.map((item) => (
-          <Card {...item} />
+          <BlogCard {...item} />
         ))}
       </div>
       {/* <Pagination page={page} hasPrev={hasPrev} hasNext={hasNext} /> */}
