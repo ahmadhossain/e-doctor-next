@@ -12,17 +12,20 @@ export const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        if (
-          credentials?.email !== "admin@example.com" ||
-          credentials.password !== "@Password123"
-        ) {
-          throw new Error("Invalid email or password");
+        const res = await fetch("http://localhost:8080/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(credentials),
+        });
+        console.log(credentials);
+        const user = await res.json();
+
+        // If no error and we have user data, return it
+        if (res.ok && user) {
+          return user;
         }
-        return {
-          email: "admin@example.com",
-          name: "Admin",
-          id: "test-id",
-        };
+        // Return null if user data could not be retrieved
+        return null;
       },
     }),
     GoogleProvider({
