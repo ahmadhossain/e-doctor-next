@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Checkbox, Input, Radio, Space } from "antd";
 import { CheckboxChangeEvent } from "antd/es/checkbox/Checkbox";
 
@@ -33,13 +33,27 @@ const doclist = [
 
 const DoctorListPage = () => {
   const [value, setValue] = useState(1);
+  const [doctors, setDoctors] = useState([]);
 
-  const onChange = (e: any) => {
+  useEffect(() => {
+    const getVerifiedDoctors = async () => {
+      const res = await fetch(`http://localhost:8080/api/doctors/verified`, {
+        cache: "no-store",
+      });
+      const data = await res.json();
+      console.log(data);
+      setDoctors(data);
+    };
+
+    getVerifiedDoctors();
+  }, []);
+
+  const onChange = (e) => {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
 
-  const onCheckboxChange = (e: CheckboxChangeEvent) => {
+  const onCheckboxChange = (e) => {
     console.log(`checked = ${e.target.checked}`);
   };
 
@@ -61,9 +75,7 @@ const DoctorListPage = () => {
         </Radio.Group>
       </div>
       <div className="w-full px-10 py-5">
-        {doclist.map((doc) => (
-          <DoctorCard {...doc} />
-        ))}
+        {doctors.length !== 0 && doctors?.map((doc) => <DoctorCard {...doc} />)}
       </div>
     </div>
   );

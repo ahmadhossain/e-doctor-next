@@ -7,11 +7,12 @@ import { useContext } from "react";
 import Link from "next/link";
 
 const DoctorCard = ({
-  name,
+  fullName,
   specialities,
   degree,
   working,
   rating,
+  image,
   experience,
 }) => {
   const router = useRouter();
@@ -24,15 +25,17 @@ const DoctorCard = ({
   };
 
   return (
-    <div className="flex rounded-md cursor-pointer shadow hover:shadow-md my-3 p-4 gap-10 border ">
-      <div className="w-24 flex  justify-center items-center rounded-md bg-gray-200">
-        <AiOutlineUser size="3.5rem" color="white" />
-      </div>
-      <div>
-        <div className="text-md font-medium text-slate-800">{name}</div>
-        <div className="text-base font-light">{degree}</div>
-        <div className="text-gray-400 text-sm">Specialities</div>
-        <div className="text-sm">{specialities}</div>
+    <div className="grid grid-cols-3 rounded-md cursor-pointer shadow hover:shadow-md my-3 p-4 gap-10 border ">
+      <div className="flex gap-6">
+        <div className="w-28 flex  justify-center items-center rounded-md bg-gray-200">
+          <img src={image} />
+        </div>
+        <div>
+          <div className="text-md font-medium text-slate-800">{fullName}</div>
+          <div className="text-base font-light">{degree}</div>
+          <div className="text-gray-400 text-sm">Specialities</div>
+          <div className="text-sm">{specialities}</div>
+        </div>
       </div>
       <div>
         <div className="text-gray-400 text-sm">Working in</div>
