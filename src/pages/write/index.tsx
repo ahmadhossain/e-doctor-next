@@ -69,31 +69,34 @@ const WritePage = () => {
   //     router.push("/");
   //   }
 
-  //   const slugify = (str) =>
-  //     str
-  //       .toLowerCase()
-  //       .trim()
-  //       .replace(/[^\w\s-]/g, "")
-  //       .replace(/[\s_-]+/g, "-")
-  //       .replace(/^-+|-+$/g, "");
+  const slugify = (str: any) =>
+    str
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, "")
+      .replace(/[\s_-]+/g, "-")
+      .replace(/^-+|-+$/g, "");
 
-  //   const handleSubmit = async () => {
-  //     const res = await fetch("/api/posts", {
-  //       method: "POST",
-  //       body: JSON.stringify({
-  //         title,
-  //         desc: value,
-  //         img: media,
-  //         slug: slugify(title),
-  //         catSlug: catSlug || "style", //If not selected, choose the general category
-  //       }),
-  //     });
+  const handleSubmit = async () => {
+    const res = await fetch("http://localhost:8080/api/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        desc: value,
+        // img: media,
+        slug: slugify(title),
+        userEmail: "ahmad@gmail.com",
+      }),
+    });
 
-  //     if (res.status === 200) {
-  //       const data = await res.json();
-  //       router.push(`/posts/${data.slug}`);
-  //     }
-  //   };
+    if (res.status === 200) {
+      const data = await res.json();
+      router.push(`/blog/${data.slug}`);
+    }
+  };
 
   return (
     <div className="px-10">
@@ -105,18 +108,14 @@ const WritePage = () => {
             className={styles.input}
             onChange={(e) => setTitle(e.target.value)}
           />
-          <Button style={{ marginTop: 50 }} type="primary" onClick={() => {}}>
+          <Button
+            style={{ marginTop: 50 }}
+            type="primary"
+            onClick={handleSubmit}
+          >
             Publish
           </Button>
         </div>
-        {/* <select className={styles.select} onChange={(e) => setCatSlug(e.target.value)}>
-        <option value="style">style</option>
-        <option value="fashion">fashion</option>
-        <option value="food">food</option>
-        <option value="culture">culture</option>
-        <option value="travel">travel</option>
-        <option value="coding">coding</option>
-      </select> */}
         <div className={styles.editor}>
           {/* <button className={styles.button} onClick={() => setOpen(!open)}>
           <Image src="/plus.png" alt="" width={16} height={16} />
@@ -145,17 +144,10 @@ const WritePage = () => {
           <TextArea
             // showCount
             // maxLength={100}
-            // onChange={}
+            onChange={(e) => setValue(e.target.value)}
             placeholder="Write..."
             style={{ height: 220, resize: "none", border: 0 }}
           />
-          {/* <ReactQuill
-          className={styles.textArea}
-          theme="bubble"
-          value={value}
-          onChange={setValue}
-          placeholder="Tell your story..."
-        /> */}
         </div>
       </div>
     </div>
