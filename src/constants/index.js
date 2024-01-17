@@ -64,49 +64,49 @@ const districts = [
 
 export const registerFieldData = [
   {
-    name: "FullName",
+    name: "fullName",
     label: "Full name",
     required: true,
   },
-  { name: "DateOfBirth", label: "Date of birth" },
+  { name: "dateOfBirth", label: "Date of birth" },
   {
-    name: "Gender",
+    name: "gender",
     label: "Gender",
     type: "select",
-    options: ["পুরুষ", "মহিলা"],
+    options: ["Male", "Female"],
   },
   {
-    name: "District",
+    name: "district",
     label: "District",
     type: "select",
     options: districts,
   },
   {
-    name: "NID",
+    name: "nid",
     label: "National ID",
   },
   {
-    name: "RegNumBMDC",
+    name: "regNumBMDC",
     label: "Registration Number (BMDC)",
   },
   {
-    name: "DoctorType",
+    name: "doctorType",
     label: "Doctor Type",
     type: "select",
     options: ["Medical", "Dental", "Veterinary"],
   },
   {
-    name: "Mobile",
+    name: "mobile",
     label: "Mobile number",
     pattern: /^(\+?880|0)[1-9][0-9]{9}$/,
   },
   {
-    name: "Email",
+    name: "email",
     label: "Email",
     pattern: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
   },
   {
-    name: "Password",
+    name: "password",
     label: "Password",
   },
 ];

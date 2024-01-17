@@ -12,17 +12,22 @@ const RegisterPage = () => {
     reset,
     formState: { errors },
   } = useForm({
-    defaultValues: { PermanentAddressDristrict: "", Gender: "" },
+    defaultValues: { dirstrict: "", gender: "" },
     mode: "onTouched",
     criteriaMode: "all",
   });
 
   const onSubmit = async (data) => {
-    const registerData = {
-      ...data,
-      Role: "",
-    };
-    console.log(registerData);
+    const res = await fetch("http://localhost:8080/api/doctors", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...data,
+        role: "doctor",
+      }),
+    });
     reset();
   };
 
