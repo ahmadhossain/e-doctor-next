@@ -5,12 +5,15 @@ import Image from "next/image";
 import logo from "../../public/images/logo.png";
 import { Button } from "antd";
 import { useRouter } from "next/router";
+import useLangStore from "@/useLangStore";
 
 const Nav = () => {
   //   const session =  getServerSession(options);
   const router = useRouter();
   const curr = router.pathname;
   const { data: session } = useSession();
+  const { en, toggleLan } = useLangStore();
+  console.log(en);
 
   const activeLinkStyle = "text-teal-400 hover:text-teal-400";
 
@@ -23,6 +26,9 @@ const Nav = () => {
             <div className="text-xl font-bold">
               <span className="text-teal-500">e</span>Doctor
             </div>
+            <Button onClick={toggleLan} shape="round">
+              {en ? "বাংলা" : "EN"}
+            </Button>
           </div>
         </Link>
         <div className="flex gap-10">

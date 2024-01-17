@@ -5,40 +5,12 @@ import { CheckboxChangeEvent } from "antd/es/checkbox/Checkbox";
 import DoctorCard from "@/components/DoctorCard";
 import { useRouter } from "next/router";
 
-const doclist = [
-  {
-    name: "Dr. Shafwanur Rahman",
-    specialities: "General Physician",
-    degree: "MBBs",
-    working: "Dhaka Shishu Hospital",
-    rating: 5,
-    experience: 5,
-  },
-  {
-    name: "Dr. Shafwanur Rahman",
-    specialities: "General Physician",
-    degree: "MBBs",
-    working: "Dhaka Shishu Hospital",
-    rating: 5,
-    experience: 5,
-  },
-  {
-    name: "Dr. Shafwanur Rahman",
-    specialities: "General Physician",
-    degree: "MBBs",
-    working: "Dhaka Shishu Hospital",
-    rating: 5,
-    experience: 5,
-  },
-];
-
 const DoctorListPage = () => {
   const [value, setValue] = useState(1);
   const [doctors, setDoctors] = useState([]);
 
   const router = useRouter();
   const sid = router?.query?.specilityId;
-  console.log(router.query);
 
   useEffect(() => {
     const getVerifiedDoctors = async (slug) => {
@@ -49,7 +21,6 @@ const DoctorListPage = () => {
         }
       );
       const data = await res.json();
-      console.log(data);
       setDoctors(data);
     };
 
