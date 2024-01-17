@@ -3,6 +3,7 @@ import { Checkbox, Input, Radio, Space } from "antd";
 import { CheckboxChangeEvent } from "antd/es/checkbox/Checkbox";
 
 import DoctorCard from "@/components/DoctorCard";
+import { useRouter } from "next/router";
 
 const doclist = [
   {
@@ -35,18 +36,25 @@ const DoctorListPage = () => {
   const [value, setValue] = useState(1);
   const [doctors, setDoctors] = useState([]);
 
+  const router = useRouter();
+  const sid = router?.query?.specilityId;
+  console.log(router.query);
+
   useEffect(() => {
-    const getVerifiedDoctors = async () => {
-      const res = await fetch(`http://localhost:8080/api/doctors/verified`, {
-        cache: "no-store",
-      });
+    const getVerifiedDoctors = async (slug) => {
+      const res = await fetch(
+        `http://localhost:8080/api/doctors/speciality/${slug}`,
+        {
+          cache: "no-store",
+        }
+      );
       const data = await res.json();
       console.log(data);
       setDoctors(data);
     };
 
-    getVerifiedDoctors();
-  }, []);
+    if (sid) getVerifiedDoctors(sid);
+  }, [sid]);
 
   const onChange = (e) => {
     console.log("radio checked", e.target.value);
