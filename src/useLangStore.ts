@@ -6,7 +6,7 @@ type Store = {
 };
 
 const useStore = create<Store>()((set) => ({
-  en: false,
+  en: true,
   toggleLan: () => set((state) => ({ en: !state.en })),
 }));
 
