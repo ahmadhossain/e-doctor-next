@@ -27,7 +27,24 @@ const DoctorListPage = () => {
     if (sid) getVerifiedDoctors(sid);
   }, [sid]);
 
-  const onChange = (e) => {
+  useEffect(() => {
+    const getVerifiedDoctors = async (filter) => {
+      const sid = router?.query?.specilityId;
+      const res = await fetch(
+        `http://localhost:8080/api/doctors/${filter}/${sid}`,
+        {
+          cache: "no-store",
+        }
+      );
+      const data = await res.json();
+      setDoctors(data);
+    };
+
+    if (value === 2) getVerifiedDoctors("sortByExperience");
+    else if (value === 3) getVerifiedDoctors("sortByRating");
+  }, [value]);
+
+  const onRadioChange = async (e) => {
     console.log("radio checked", e.target.value);
     setValue(e.target.value);
   };
@@ -45,7 +62,7 @@ const DoctorListPage = () => {
           Available in next 2 hours
         </Checkbox>
         <div className="font-semibold text-lg text-slate-800 py-3">Sort By</div>
-        <Radio.Group onChange={onChange} value={value}>
+        <Radio.Group onChange={onRadioChange} value={value}>
           <Space direction="vertical">
             <Radio value={1}>Default</Radio>
             <Radio value={2}>Experience</Radio>
