@@ -18,6 +18,7 @@ import { Button } from "antd";
 const WritePage = () => {
   const { status } = useSession();
   const router = useRouter();
+  const { data: session } = useSession();
 
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState(null);
@@ -25,6 +26,8 @@ const WritePage = () => {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
+
+  if (!session) router.push("/api/auth/signin");
 
   //   useEffect(() => {
   //     const storage = getStorage(app);

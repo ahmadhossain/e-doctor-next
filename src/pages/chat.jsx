@@ -15,7 +15,6 @@ const ChatPage = () => {
   const { data: session } = useSession();
   const router = useRouter();
   const socket = useRef();
-  console.log(session);
 
   if (!session) router.push("/api/auth/signin");
 
